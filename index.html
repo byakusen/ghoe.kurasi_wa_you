@@ -398,6 +398,45 @@ h1 .b{color:var(--blue)}h1 .o{color:var(--orange)}h1 .g{color:var(--green)}
 .kksum .h{background:transparent;font-weight:800;color:var(--ink-soft);padding:2px 4px}
 .kw.rei{border-color:var(--blue);color:var(--blue)}
 .kw.rei.on{background:var(--blue-bg)}
+/* 言葉の練習（❶ 線でつなぐ・❷ 言葉をえらぶ） */
+.ren{flex:1;min-height:0;display:flex;flex-direction:column}
+.ren .box{flex:1;min-height:0;display:flex;flex-direction:column;gap:10px;overflow:auto}
+.rlead{font-weight:800;font-size:1.15rem;line-height:1.5}
+.rlead small{display:block;font-weight:500;font-size:.85rem;color:var(--ink-soft)}
+.rmatch{position:relative;display:grid;grid-template-columns:fit-content(64%) minmax(70px,220px) fit-content(32%);justify-content:center;flex:none}
+.rcol{display:flex;flex-direction:column;justify-content:space-around;gap:10px}
+.rcol.r{grid-column:3;min-width:10.5em}
+.rcol.l .ritem{padding-right:30px}
+.rcol.r .ritem{padding-left:32px;padding-right:22px}
+.ritem{position:relative;border:2px solid rgba(36,50,61,.15);background:#fff;border-radius:14px;padding:9px 14px;text-align:left;
+  font-weight:800;font-size:clamp(1.05rem,1.75vw,1.35rem);line-height:1.5;box-shadow:0 2px 8px rgba(40,60,80,.08);
+  transition:transform .15s,border-color .2s,background .2s,box-shadow .2s}
+.ritem:hover:not(:disabled){transform:translateY(-2px);border-color:#ffb74d}
+.ritem:disabled{cursor:default}
+.ritem .rn{color:var(--ink-soft);margin-right:6px}
+.ritem::after{content:"";position:absolute;top:50%;width:14px;height:14px;margin-top:-7px;border-radius:50%;border:2px solid #fff}
+.rcol.l .ritem::after{right:-9px;background:var(--blue)}
+.rcol.r .ritem::after{left:-9px;background:var(--orange)}
+.ritem.sel{border-color:#ffb74d;box-shadow:0 0 0 4px rgba(255,183,77,.45)}
+.ritem.ok{border-color:var(--green);background:var(--green-bg)}
+.ritem.bad{border-color:var(--red);background:#fde2e2;animation:shake .4s}
+.rsvg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.rsvg line{stroke:var(--green);stroke-width:4;stroke-linecap:round}
+.rsvg line.new{animation:rline .45s ease}
+@keyframes rline{from{opacity:0}to{opacity:1}}
+.rsel{display:flex;flex-direction:column;gap:10px}
+.rq{background:#fff;border-radius:16px;padding:8px 16px;box-shadow:0 2px 8px rgba(40,60,80,.08);display:flex;flex-direction:column;gap:2px}
+.rq .rs{font-weight:800;font-size:clamp(1.1rem,1.9vw,1.45rem);line-height:1.9}
+.rq .rn{color:var(--ink-soft);margin-right:8px}
+.ropt{border:3px solid transparent;background:var(--blue-bg);color:var(--blue);border-radius:999px;padding:0 14px;margin:0 3px;
+  font-weight:800;font-size:inherit;line-height:1.45;transition:transform .15s,background .2s,border-color .2s,opacity .2s}
+.ropt:hover:not(:disabled){transform:translateY(-2px)}
+.ropt:disabled{cursor:default}
+.ropt.ok{border-color:var(--green);background:#fff;color:var(--green)}
+.ropt.dim{opacity:.35}
+.ropt.bad{background:#fde2e2;color:var(--red);animation:shake .4s}
+.rq .re{font-size:.95rem;font-weight:700;line-height:1.5;color:var(--green);animation:fade .3s ease}
+.rq .re.ng{color:var(--red)}
 
 /* ===== 重要語句（ひな形1・つなぐ言葉と同じつくり：12まいずつ） ===== */
 .wdocs{flex:1;display:grid;grid-template-columns:1.6fr 1fr;gap:.55rem;min-height:0}
@@ -485,6 +524,13 @@ h1 .b{color:var(--blue)}h1 .o{color:var(--orange)}h1 .g{color:var(--green)}
   .bar .lead{flex-basis:100%}
   .opts{gap:8px}
   .opt{padding:12px 4px}
+  .ren{flex:none}
+  .ren .box{overflow:visible}
+  .rmatch{grid-template-columns:minmax(0,1.6fr) 34px minmax(0,1fr)}
+  .ritem{font-size:.95rem;padding:7px 10px}
+  .rcol.r{min-width:0}
+  .rcol.l .ritem{padding-right:16px}
+  .rcol.r .ritem{padding-left:20px;padding-right:8px}
   .wdocs{grid-template-columns:1fr;grid-template-rows:minmax(420px,1.9fr) auto;flex:none}
   .wgrid{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(4,minmax(0,1fr))}
 }
@@ -498,6 +544,14 @@ h1 .b{color:var(--blue)}h1 .o{color:var(--orange)}h1 .g{color:var(--green)}
   .toi3 .dinput{font-size:1rem;min-height:4.8em}
   .toi3 .tfb{font-size:.95rem;line-height:1.6}
   .tqcard{font-size:1.05rem;padding:6px 12px}
+  .ren .box{gap:6px;padding:12px 16px}
+  .rcol{gap:6px}
+  .ritem{padding:5px 12px;font-size:1.15rem}
+  .rsel{gap:6px}
+  .rq{padding:4px 14px}
+  .rq .rs{font-size:1.2rem;line-height:1.75}
+  .rq .re{font-size:.88rem}
+  .ren .tfb{padding:6px 12px;line-height:1.5}
   .toi .ylist{gap:5px}
   .sent{line-height:1.7}
   .qcard{padding:12px 18px}
@@ -563,6 +617,7 @@ const TABS = [
   {view:'toi',     tab:'④ 問いと答え',       sub:'問いの文・答えの文'},
   {view:'dan',     tab:'⑤ 段落の要約',       sub:'キーワード3つで20字'},
   {view:'kaku',    tab:'⑥ 説明文を書こう',   sub:'表から説明文へ'},
+  {view:'renshu',  tab:'言葉の練習',         sub:'線でつなぐ・えらぶ'},
   {view:'words',   tab:'重要語句',           sub:'ことばのいみ'}
 ];
 
@@ -1250,6 +1305,124 @@ VIEWS.kaku = function(){
     const old=()=>{ const a=document.createElement('textarea'); a.value=t; document.body.appendChild(a); a.select(); try{document.execCommand('copy');ok();}catch(e){} a.remove(); };
     if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(ok,old); else old();
   };
+};
+
+/* ---- 言葉の練習（線でつなぐ・文に合う言葉をえらぶ。セットごとに上のボタンで切りかえ） ----
+   type:'sen'（線でつなぐ）… items：a＝文の前半、b＝つながる言葉、e＝つながったときの説明。extra：どれともつながらない言葉
+   type:'sel'（えらぶ）…… items：pre＋（o のどちらか）＋post、a＝正しいほうの番号、e＝正しいときの説明 */
+const RENSHU = [
+  {type:'sen', tab:'❶ つなごう 1', lead:'正しい文になるように、線でつなごう。',
+    items:[
+      {a:'ほかの人もすわれるように、ベンチの間を', b:'つめる。', e:'「間をつめる」は、間をせまくして近づくこと。'},
+      {a:'この絵本のお話は、本当にあった出来事に', b:'もとづく。', e:'「もとづく」は、あるものをよりどころにすること。'},
+      {a:'休みの日は、和室でゆっくりと', b:'くつろぐ。', e:'「くつろぐ」は、心や体をゆったりと楽にすること。'},
+      {a:'お客さんが来たので、たたみの上にざぶとんを', b:'しく。', e:'ざぶとんは、たたみの上に「しいて」すわるよ。'}
+    ],
+    extra:['くずす。']},
+  {type:'sen', tab:'❷ つなごう 2', lead:'正しい文になるように、線でつなごう。',
+    items:[
+      {a:'いすから立ち上がるときは、まず、こしを', b:'うかす。', e:'「こしをうかす」は、こしを少し上にあげること。'},
+      {a:'つかれたので、たたみの上でごろりと', b:'ねころぶ。', e:'「ねころぶ」は、ごろりと横になること。'},
+      {a:'クラスのみんなで、教室のそうじに', b:'取り組む。', e:'「取り組む」は、目的に向かって一生けんめいにすること。'},
+      {a:'学習を始める前に、これからの流れを', b:'見通す。', e:'「見通す」は、これからすることを、はじめに見わたしてつかむこと。'}
+    ],
+    extra:['こしかける。']},
+  {type:'sel', tab:'❸ えらぼう 1', lead:'文に合う言葉のほうを、えらぼう。',
+    items:[
+      {pre:'おじいちゃんは、ざぶとんの上で、あぐらを', o:['かいた','した'], a:0, post:'。', e:'「あぐらをかく」という言い方をするよ。'},
+      {pre:'正ざで足がしびれてきたので、ひざを', o:['くずした','こわした'], a:0, post:'。', e:'正ざをやめて足を楽にすることを「ひざをくずす」というよ。'},
+      {pre:'いすから立つときは、体の重みを前方に', o:['うつす','はこぶ'], a:0, post:'。', e:'体の重みを前にうつすと、立ち上がりやすいね。'},
+      {pre:'置いてある家具を見れば、何に使う部屋か見当が', o:['つく','とれる'], a:0, post:'。', e:'「見当がつく」は、たぶんこうだろうと、およそ分かること。'}
+    ]},
+  {type:'sel', tab:'❹ えらぼう 2', lead:'文に合う言葉のほうを、えらぼう。',
+    items:[
+      {pre:'ほかの人もすわれるように、ベンチの間を', o:['つめる','ためる'], a:0, post:'。', e:'「間をつめる」は、間をせまくして近づくこと。'},
+      {pre:'この絵本のお話は、本当にあった出来事に', o:['もとづく','ちかづく'], a:0, post:'。', e:'「もとづく」は、あるものをよりどころにすること。'},
+      {pre:'休みの日は、和室でゆっくりと', o:['くつろぐ','いそぐ'], a:0, post:'。', e:'「くつろぐ」は、心や体をゆったりと楽にすること。'},
+      {pre:'お客さんが来たので、たたみの上にざぶとんを', o:['しく','はる'], a:0, post:'。', e:'ざぶとんは、たたみの上に「しいて」すわるよ。'}
+    ]}
+];
+const REN_NO=['①','②','③','④','⑤','⑥','⑦','⑧'];
+let rT=0, rState=null;
+function renNew(k){
+  const R=RENSHU[k];
+  if(R.type==='sen'){ const n=R.items.length+R.extra.length;
+    return {order:shuffle([...Array(n).keys()]), link:{}, sel:null, bad:null, msg:null, newL:-1, done:false}; }
+  return {items:R.items.map(q=>({ord:shuffle(q.o.map((_,i)=>i)), ok:false, bad:-1})), done:false};
+}
+function renRight(R,j){ return j<R.items.length?R.items[j].b:R.extra[j-R.items.length]; }
+function renLines(){
+  const box=$('#rMatch'), svg=$('#rSvg'); if(!box||!svg||!rState||RENSHU[rT].type!=='sen') return;
+  const S=rState[rT], B=box.getBoundingClientRect();
+  svg.innerHTML=Object.keys(S.link).map(l=>{
+    const a=box.querySelector(`[data-l="${l}"]`), b=box.querySelector(`[data-r="${S.link[l]}"]`); if(!a||!b) return '';
+    const A=a.getBoundingClientRect(), C=b.getBoundingClientRect();
+    return `<line class="${+l===S.newL?'new':''}" x1="${A.right-B.left}" y1="${A.top+A.height/2-B.top}" x2="${C.left-B.left}" y2="${C.top+C.height/2-B.top}"/>`;
+  }).join('');
+}
+window.addEventListener('resize',renLines);
+VIEWS.renshu = function(){
+  if(!rState) rState=RENSHU.map((_,k)=>renNew(k));
+  const R=RENSHU[rT], S=rState[rT];
+  let body;
+  if(R.type==='sen'){
+    const I=R.items, used=Object.values(S.link);
+    const isSel=(s,i)=>S.sel&&S.sel.s===s&&S.sel.i===i;
+    body=`<div class="rlead">${R.lead}<small>左の文をおしてから、右の言葉をおすと、線でつながるよ。（右の言葉から先におしてもよい）</small></div>
+      <div class="rmatch" id="rMatch">
+        <div class="rcol l">${I.map((it,i)=>{ const ok=S.link[i]!==undefined;
+          return `<button class="ritem ${ok?'ok':''} ${isSel('l',i)?'sel':''} ${S.bad&&S.bad.l===i?'bad':''}" data-l="${i}" ${ok||S.done?'disabled':''}><span class="rn">${REN_NO[i]}</span>${it.a}</button>`;}).join('')}</div>
+        <div class="rcol r">${S.order.map(j=>{ const ok=used.includes(j);
+          return `<button class="ritem ${ok?'ok':''} ${isSel('r',j)?'sel':''} ${S.bad&&S.bad.r===j?'bad':''}" data-r="${j}" ${ok||S.done?'disabled':''}>${renRight(R,j)}</button>`;}).join('')}</div>
+        <svg class="rsvg" id="rSvg" aria-hidden="true"></svg>
+      </div>
+      ${S.done?'<div class="tfb ok"><b>◯ ぜんぶつながったね！</b>できた文を、声に出して読んでみよう。</div>'
+        :S.msg?`<div class="tfb ${S.msg[0]?'ok':'ng'}"><b>${S.msg[0]?'◯ つながったね！':'✕ 意味の通る文にならないよ。'}</b>${S.msg[1]}</div>`:''}`;
+  }else{
+    const I=R.items;
+    body=`<div class="rlead">${R.lead}<small>（　）の中の、正しいほうの言葉をおそう。</small></div>
+      <div class="rsel">${I.map((q,i)=>{ const st=S.items[i];
+        const btn=k=>`<button class="ropt ${st.ok&&k===q.a?'ok':''} ${st.ok&&k!==q.a?'dim':''} ${!st.ok&&st.bad===k?'bad':''}" data-q="${i}" data-k="${k}" ${st.ok?'disabled':''}>${q.o[k]}</button>`;
+        return `<div class="rq"><div class="rs"><span class="rn">${REN_NO[i]}</span>${q.pre}（${st.ord.map(btn).join('・')}）${q.post}</div>
+          ${st.ok?`<div class="re">◯ ${q.e}</div>`:st.bad>=0?`<div class="re ng">✕ 「${q.o[st.bad]}」では、正しい言い方にならないよ。もう一度えらぼう。</div>`:''}</div>`;}).join('')}</div>
+      ${S.done?'<div class="tfb ok"><b>◯ ぜんぶできたね！</b>えらんだ言葉を使って、自分でも文を作ってみよう。</div>':''}`;
+  }
+  panel.innerHTML=`
+    <div class="bar"><div class="seg" id="rSeg">${RENSHU.map((x,k)=>`<button class="${k===rT?'on':''} ${rState[k].done?'done':''}" data-k="${k}">${x.tab}</button>`).join('')}</div>
+      <div class="lead">重要語句の言葉を、文の中で使ってみよう</div><button class="btn" id="rReset">もう一度</button></div>
+    <div class="ren"><div class="box">${body}</div></div>`;
+  panel.querySelectorAll('#rSeg button').forEach(b=>b.onclick=()=>{rT=+b.dataset.k;VIEWS.renshu();});
+  $('#rReset').onclick=()=>{ rState[rT]=renNew(rT); VIEWS.renshu(); };
+  if(R.type==='sen'){
+    const I=R.items;
+    const pick=(s,i)=>{
+      S.bad=null; S.newL=-1;
+      if(S.sel&&S.sel.s===s&&S.sel.i===i){ S.sel=null; VIEWS.renshu(); return; }
+      if(!S.sel||S.sel.s===s){ S.sel={s,i}; S.msg=null; VIEWS.renshu(); return; }
+      const l=s==='l'?i:S.sel.i, r=s==='r'?i:S.sel.i; S.sel=null;
+      if(l===r){
+        S.link[l]=r; S.newL=l; S.msg=[1,I[l].e]; pinpon();
+        if(Object.keys(S.link).length===I.length){ S.done=true; setTimeout(party,200); }
+      }else{
+        S.bad={l,r}; S.msg=[0,`「${I[l].a}<b>${renRight(R,r)}</b>」では、意味が通らないね。`]; bubu();
+      }
+      VIEWS.renshu();
+    };
+    panel.querySelectorAll('.ritem[data-l]').forEach(b=>b.onclick=()=>pick('l',+b.dataset.l));
+    panel.querySelectorAll('.ritem[data-r]').forEach(b=>b.onclick=()=>pick('r',+b.dataset.r));
+    renLines();
+    if(document.fonts&&document.fonts.ready) document.fonts.ready.then(renLines);
+  }else{
+    const I=R.items;
+    panel.querySelectorAll('.ropt').forEach(b=>b.onclick=()=>{
+      const i=+b.dataset.q, k=+b.dataset.k, st=S.items[i]; if(st.ok) return;
+      S.items.forEach((x,j)=>{ if(j!==i) x.bad=-1; });
+      if(k===I[i].a){ st.ok=true; st.bad=-1; pinpon();
+        if(S.items.every(x=>x.ok)){ S.done=true; setTimeout(party,200); } }
+      else { st.bad=k; bubu(); }
+      VIEWS.renshu();
+    });
+  }
 };
 
 /* ---- 重要語句 ----

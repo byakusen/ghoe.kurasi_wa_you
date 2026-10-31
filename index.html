@@ -72,6 +72,11 @@ h1 .b{color:var(--blue)}h1 .o{color:var(--orange)}h1 .g{color:var(--green)}
 .tab.word small{color:var(--gl-ink)}
 .tab.word[aria-selected="true"]{background:var(--gl);color:#fff}
 .tab.word[aria-selected="true"] small{color:#fff}
+.tab.renshu{background:#dff3ef;color:#137a70}
+.tab.renshu small{color:#137a70}
+.tab.renshu[aria-selected="true"]{background:#16897d;color:#fff}
+.tab.renshu[aria-selected="true"] small{color:#fff}
+.tabs .tab.renshu[aria-selected="true"]::after{display:none}
 .tab:not(.word)[aria-selected="true"]::after{content:"";display:block;height:4px;border-radius:4px;margin:5px auto 0;width:40%;
   background:linear-gradient(90deg,var(--blue),var(--orange),var(--green))}
 
@@ -1331,7 +1336,7 @@ const RENSHU = [
     items:[
       {pre:'おじいちゃんは、ざぶとんの上で、あぐらを', o:['かいた','した'], a:0, post:'。', e:'「あぐらをかく」という言い方をするよ。'},
       {pre:'正ざで足がしびれてきたので、ひざを', o:['くずした','こわした'], a:0, post:'。', e:'正ざをやめて足を楽にすることを「ひざをくずす」というよ。'},
-      {pre:'いすから立つときは、体の重みを前方に', o:['うつす','はこぶ'], a:0, post:'。', e:'体の重みを前にうつすと、立ち上がりやすいね。'},
+      {pre:'落としたえんぴつをひろうために、いすから、こしを', o:['うかせる','うかぶ'], a:0, post:'。', e:'こしを少し上にあげることを「こしをうかせる」というよ。'},
       {pre:'置いてある家具を見れば、何に使う部屋か見当が', o:['つく','とれる'], a:0, post:'。', e:'「見当がつく」は、たぶんこうだろうと、およそ分かること。'}
     ]},
   {type:'sel', tab:'❹ えらぼう 2', lead:'文に合う言葉のほうを、えらぼう。',
@@ -1800,7 +1805,7 @@ TABS.forEach((t,i)=>{
   if(!VIEWS[t.view]) console.error('タブの view「'+t.view+'」がありません');
   const sub=t.sub==='auto'&&t.view==='quiz'?QUIZ.qs.length+'もん':t.sub;
   const b=document.createElement('button');
-  b.className='tab'+(t.view==='words'?' word':'');
+  b.className='tab'+(t.view==='words'?' word':'')+(t.view==='renshu'?' renshu':'');
   b.setAttribute('role','tab');
   b.setAttribute('aria-selected',i===0?'true':'false');
   b.innerHTML=t.tab+(sub?`<small>${sub}</small>`:'');
